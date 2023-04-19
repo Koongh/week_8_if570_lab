@@ -79,10 +79,6 @@ class GameFragment : Fragment() {
         binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord
     }
 
-    private fun onSubmitWord() {
-
-    }
-
     /*
      * Skips the current word without changing the score.
      * Increases the word count.
@@ -90,6 +86,21 @@ class GameFragment : Fragment() {
     private fun onSkipWord() {
 
     }
+
+    private fun onSubmitWord() {
+        val playerWord = binding.textInputEditText.text.toString()
+        if (viewModel.isUserWordCorrect(playerWord)) {
+            setErrorTextField(false)
+            if (viewModel.nextWord()) {
+                updateNextWordOnScreen()
+            } else {
+                showFinalScoreDialog()
+            }
+        } else {
+            setErrorTextField(true)
+        }
+    }
+
 
     private fun showFinalScoreDialog() {
 //        MaterialAlertDialogBuilder(requireContext())
