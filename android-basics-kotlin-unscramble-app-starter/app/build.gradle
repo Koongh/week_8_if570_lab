@@ -23,6 +23,10 @@ plugins {
 android {
     compileSdkVersion 33
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId "com.example.android.unscramble"
         minSdkVersion 23
@@ -45,9 +49,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-    buildFeatures {
-        viewBinding true
     }
 }
 
